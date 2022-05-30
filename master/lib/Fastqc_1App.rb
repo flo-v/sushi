@@ -52,7 +52,7 @@ EOS
     }.merge(extract_columns(@inherit_tags))
   end
   def commands
-    run_RApp("EzAppFastqc")
+    run_RApp("EzAppFastqc_1")
   end
 end
 
