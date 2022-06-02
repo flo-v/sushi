@@ -5,16 +5,16 @@ require 'sushi_fabric'
 require_relative 'global_variables'
 include GlobalVariables
 
-class VcfStatsApp <  SushiFabric::SushiApp
+class FloApp <  SushiFabric::SushiApp
   def initialize
     super
-    @name = 'VcfStats'
+    @name = 'Flo'
     @params['process_mode'] = 'DATASET'
     @analysis_category = 'Variants'
     @description =<<-EOS
 vcf-stats<br/>
     EOS
-    @required_columns = ['Name', 'Filtered VCF', 'Dummy']
+    @required_columns = ['Name', 'Filtered VCF']
     @required_params = ['name']
     @params['cores'] = '1'
     @params['ram'] = '50'
@@ -33,7 +33,7 @@ vcf-stats<br/>
     }.merge(extract_columns(@inherit_tags))
   end
   def commands
-    run_RApp("EzAppVcfStats")
+    run_RApp("EzAppFlo")
     #command = "vcf-stats #{File.join("$GSTORE_DIR", @dataset[0]['Filtered VCF [File]'])} -p #{@params['name']}/vcf_stats"
   end
 end
